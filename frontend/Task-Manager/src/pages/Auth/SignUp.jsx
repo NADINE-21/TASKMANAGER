@@ -7,6 +7,7 @@ import { useNavigate,Link } from 'react-router-dom';
 import axiosInstance from '../../utils/axiosinstance.js';
 import { API_PATHS } from '../../utils/apiPaths.js';
 import { UserContext } from '../../context/userContext';
+import uploadImage from '../../utils/uploadImage';
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -24,6 +25,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
       e.preventDefault();
       
+      let profileImageUrl = "";
 
       if (!fullName) {
         setError('Please enter your full name');
@@ -114,19 +116,20 @@ const SignUp = () => {
 
             <Input
             value={adminInviteToken}
-            onChange={(e) => setAdminInviteToken(e.target.value)}
+           onChange={  ({ target }) => setAdminInviteToken(target.value)}
             label="Admin Invite Token"
             placeholder="6 Digit Code"
             type="text"
             />
              </div>
             {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+
           <button type="submit" className="btn-primary">
-           Sign Up
+            Sign Up
           </button>
           <p className="text-[13px] text-slate-800 mt-3 text-center">
            Already have an account?{" "}
-            <Link className="font-medium text-primary underline" to="/signup">
+            <Link className="font-medium text-primary underline" to="/login">
               Login
             </Link>
           </p>
