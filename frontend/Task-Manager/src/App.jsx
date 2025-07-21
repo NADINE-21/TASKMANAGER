@@ -1,5 +1,5 @@
 
-import React, { use } from 'react';
+import { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
@@ -13,6 +13,7 @@ import ViewTaskDetails from './pages/User/ViewTaskDetails';
 import PrivateRoute from './routes/PrivateRoute';
 import "./index.css";
 import UserProvider, {UserContext} from './context/userContext';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -37,16 +38,23 @@ const App = () => {
            {/* User Routes */}
           <Route element={<PrivateRoute allowedRoles={['user']} />}>
             <Route path="/user/dashboard" element={<UserDashboard />} />
-            <Route path="/user/task" element={<MyTasks />} />
-            <Route path="/user/task-details/:id" element={<ViewTaskDetails />} />
+            <Route path="/user/tasks" element={<MyTasks />} />
+           <Route path="/user/task-details/:id" element={<ViewTaskDetails/>} />
           </Route>
 
           {/* Default Route */}
           <Route path="/" element={<Root/>} />
         </Routes>
       </Router>
-    
     </div>
+    <Toaster
+    toastOptions={{
+      className: "",
+      style: {
+        fontSize: "13px",
+      },
+    }}
+    />
    </UserProvider>
   )
 }
@@ -56,7 +64,7 @@ export default App;
 const Root = () => {
   const {user, loading} = useContext(UserContext);
 
-  if(loading) return <Outlet />
+  if(loading) return <Outlet/>
 
   if(!user){
     return <Navigate to="/login" />;

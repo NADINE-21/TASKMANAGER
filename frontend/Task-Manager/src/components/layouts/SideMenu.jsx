@@ -18,7 +18,7 @@ const SideMenu = ({activeMenu}) => {
         navigate(route);
     };
 
-    const handelLogout = () =>{
+    const handleLogout = () =>{ 
         localStorage.clear();
         clearUser();
         navigate("/login");
@@ -35,14 +35,14 @@ const SideMenu = ({activeMenu}) => {
     <div className="w-64 h-[calc(100vh-61px)] bg-white border-r border-black-200/50 sticky top-[61px] z-20">
         <div className="flex flex-col items-center mb-7 pt-5">
             <div className="relative">
-                <img 
-                src={user?.profileImageUrl || ""} 
-                alt="Profile Image" 
-                className="w-20 h-20 bg-slate-400 rounded-full"
-                />
+                <img
+              src={user?.profileImageUrl || null}
+              alt="Profile"
+              className="w-20 h-20 bg-slate-400 rounded-full"
+            />
             </div>
             {user?.role === "admin" && (
-                <div className= "text-[10px] font-medium text-white bg-primary px-3 py-0.5 rounded mt-1">
+                <div className="text-[10px] font-medium text-white bg-primary px-3 py-0.5 rounded mt-1">
                     Admin
                 </div>
             )}
@@ -57,7 +57,7 @@ const SideMenu = ({activeMenu}) => {
             <button
             key={`menu_${index}`}
             className={`w-full flex items-center gap-4 text-[15px] ${
-                activeMenu == item.label
+                activeMenu === item.label
                 ? "text-primary bg-linear-to-r from-blue-50/40 to-blue-100/50 border-r-3"
                 : ""
             } py-3 px-6 mb-3 cursor-pointer`}

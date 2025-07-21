@@ -15,25 +15,25 @@ import {
             id:"02",
             label:"Manage Tasks",
             icon:LuClipboard,
-            path:"/admin/dashboard"
+            path:"/admin/manage-tasks"
         },
         {
             id:"03",
-            label:"create Tasks",
+            label:"Create Tasks",
             icon: LuSquarePlus,
-            path:"/admin/dashboard"
+            path:"/admin/create-task"
         },
         {
             id:"04",
             label:"Team Members",
             icon:LuUsers,
-            path:"/admin/dashboard"
+            path:"/admin/manage-users"
         },
         {
             id:"05",
             label:"Logout",
             icon: LuLogOut,
-            path:"/admin/dashboard"
+            path:"/login"
         },
         
         
@@ -51,13 +51,13 @@ import {
             id:"02",
             label:"My Tasks",
             icon:LuClipboard,
-            path:"/user/dashboard"
+            path:"/user/tasks"
         },
         {
             id:"05",
             label:"Logout",
             icon: LuLogOut,
-            path:"/user/dashboard"
+            path:"/login"
         },    
         ];
         export const PRIORITY_DATA = [

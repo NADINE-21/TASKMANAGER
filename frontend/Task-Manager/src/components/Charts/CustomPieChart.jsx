@@ -27,5 +27,4 @@ const CustomPieChart = ({data , colors}) => {
     </ResponsiveContainer>
   )
 }
-
 export default CustomPieChart;

@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import axiosInstance from '../../utils/axiosinstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import { LuUsers } from "react-icons/lu";
-import Modal from '../layouts/Modal';
+import Modal from '../layouts/Model';
 import AvatarGroup from '../../components/layouts/AvatarGroup';
 
 
 const SelectUsers = ({selectedUsers, setSelectedUsers}) => {
     const [allUsers, setAllUsers] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
     const [tempSelectedUsers, setTempSelectedUsers] = useState([]);
 
    const getAllUsers = async () => {
@@ -66,8 +66,6 @@ const SelectUsers = ({selectedUsers, setSelectedUsers}) => {
             </div>
         )}
 
-
-
         <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -77,8 +75,7 @@ const SelectUsers = ({selectedUsers, setSelectedUsers}) => {
             {allUsers.map((user)=>(
                 <div
                 key={user._id}
-                className="flex items-center gap-4 p-3 border-b border-gray-200"
-                >
+                className="flex items-center gap-4 p-3 border-b border-gray-200">
                     <img
                     src={user.profileImageUrl}
                     alt={user.name}

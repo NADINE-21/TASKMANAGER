@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import { useUserAuth } from '../../hooks/useUserAuth'
 import { useContext } from 'react';
@@ -26,8 +25,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const [dashboardData, setDashboardData] = useState(null);
-  const [pieChartData, setPieChartdData] = useState([]);
-   const [barChartData, setBarChartdData] = useState([]);
+  const [pieChartData, setPieChartData] = useState([]);
+   const [barChartData, setBarChartData] = useState([]);
  
 
    //prepare chart data
@@ -41,16 +40,15 @@ const Dashboard = () => {
         { status: "Completed", count: taskDistribution?.Completed || 0},
     ];
 
-    setPieChartdData(taskDistributionData);
+    setPieChartData(taskDistributionData);
 
     const PriorityLevelData = [
       {priority:"Low", count: taskPriorityLevels?.Low || 0},
       {priority:"Medium", count: taskPriorityLevels?.Medium || 0},
       {priority:"High", count: taskPriorityLevels?.High || 0},
-
     ];
 
-    setBarChartdData(PriorityLevelData);
+    setBarChartData(PriorityLevelData); 
      };
 
    const getDashboardData = async () => {
@@ -143,28 +141,25 @@ const Dashboard = () => {
                 </div>
                 <CustomBarChart
                 data={barChartData}
-               
                 />
               </div>
             </div>
 
-
+        
             <div className="md:col-span-2">
               <div className="card">
                 <div className="flex items-center justify-between">
                   <h5 className="text-lg">Recent Tasks</h5>
 
                   <button className="card-btn" onClick={onSeeMore}>
-                    See All <LuArrowRight  className="text-base"/>
+                    See All <LuArrowRight className="text-base"/>
                   </button>
                 </div>
                 <TaskListTable tableData={dashboardData?.recentTasks || []}/>
-
               </div>
             </div>
-
-          </div>
-   
+            </div>
+    
     </DashboardLayout>
   );
 };
